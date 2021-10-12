@@ -31,33 +31,34 @@ const EIGHTBALL_STATES = [
  * App -> Eightball
  */
 function Eightball() {
-    const [msg, setMsg] = useState('Think of a Question');
-    const [color, setColor] = useState('black');
+    // const [msg, setMsg] = useState('Think of a Question');
+    // const [color, setColor] = useState('black');
 
-    //const [eightball, setEightball] = useState({msg: 'Think of a Question, color: 'black'})
+    const [eightball, setEightball] = useState({msg: 'Think of a Question', color: 'black'})
 
 
     function handleClick() {
         const currentState = getRandomState(EIGHTBALL_STATES); //destructure instead
         //could change to an object as the state 
-        //setEightball(currentState);
-        setMsg(currentState.msg);
-        setColor(currentState.color);
+        setEightball(currentState);
+        // setMsg(currentState.msg);
+        // setColor(currentState.color);
     }
 
     const backgroundStyle = {
-        'backgroundColor': color,
+        'backgroundColor': eightball.color,
         'borderRadius': '50%',
         'width': '200px',
         'height': '200px',
         'color': 'white',
+        'borderWidth' : '0px',
         'fontWeight': 'bold'
     }; //move to css, keep dynamic here.
 
     return (
         <div className='eightball'>
             <button className='btn' style={backgroundStyle} onClick={handleClick}>
-                {msg}
+                {eightball.msg}
             </button>
         </div>
     )
